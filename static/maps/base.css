@@ -1,0 +1,72 @@
+.banner{
+    width:  220px;
+    height: auto;
+    text-align:center;
+    padding: 5px;
+}
+
+.banner-container {
+  text-align:left;
+  margin-left:15%;
+  padding: 10px;
+  display: flex;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background-color:#00414e;
+}
+
+.banner-text{
+    padding-left: 30px;
+    text-algin: right;
+}
+
+.form{
+    margin:0;
+    padding:30px;
+    text-align: center;
+    color: #2f2f2f;
+}
+
+.about{
+    padding:30px;
+    text-align:left;
+    color: #2f2f2f;
+    background-color: #eefcfd;
+}
+
+.about-text{
+    text-align:left;
+    width: 70%;
+    margin-left:40px;
+}
+
+.how-to{
+    text-align:left;
+    padding:30px;
+    width: 70%;
+    margin-left:40px;
+    color: #2f2f2f;
+}
+
+.footer{
+    text-align:center;
+}
+
+.h{
+    color: #2f2f2f;
+    font-family: 'Arial'
+}
+
+p{
+    color: #2f2f2f;
+    font-family: 'Arial'
+}
+
+.line-container{
+    width:800px;
+    text-align:center;
+    margin:auto;
+}

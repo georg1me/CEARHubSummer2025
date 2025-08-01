@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'maps/base.css' %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load leaflet_tags %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+
+<div class="banner-container">
+    <img class="banner" src="{% static 'maps/CEAR.png' %}" alt="CEAR">
+</div>
+
+{% block content %}
+
+<h1 style="font-family: 'Arial'; text-align:center;">Results</h1>
+
+<div class="line-container">
+    <h2 class="h">{{ location }} Raw Data</h2>
+    {{ plot | safe }}
+</div>
+
+<div class="line-container">
+    <p>{{ gross_range_results }}</p>
+</div>
+
+<div class="line-container">
+    <p>{{ spike_results }}</p>
+</div>
+
+{% endblock %}
+
+<div>
+{% for event in events %}
+
+<li><a href="{% url 'event_display' event.pk %}">{{ event.name }}</a></li>
+    {% endfor %}
+</div>
+
+<style>
+    .line-container{
+    text-align:left;
+    }
+</style>
+
+</html>

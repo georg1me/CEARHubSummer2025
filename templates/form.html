@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'base.html' %}
+    <meta charset="UTF-8">
+    <title>Data Portal</title>
+    {% load leaflet_tags %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+
+{% leaflet_map "yourmap" callback="window.map_init_basic" %}
+
+{% block map %}
+<script class="leaflet-container">
+    function map_init_basic (map, options) {
+        L.marker({{ Burton4H }}, {title: "sensor"}).addTo(map);
+        L.marker({{ Catalina }}, {title: "sensor"}).addTo(map);
+        L.marker({{ HWY80 }}, {title: "sensor"}).addTo(map);
+        L.marker({{ Lazaretto }}, {title: "sensor"}).addTo(map);
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+
+</html>

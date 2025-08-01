@@ -1,0 +1,22 @@
+.banner{
+    width:  220px;
+    height: auto;
+    text-align:center;
+    padding: 5px;
+}
+
+.banner-container {
+  text-align:left;
+  margin-left:10%;
+  padding: 5px;
+  display: flex;
+}
+
+.banner-text{
+    padding-left: 30px;
+    text-algin: right;
+}
+
+.form{
+    text-align: center;
+}

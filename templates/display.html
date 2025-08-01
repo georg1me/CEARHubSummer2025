@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load leaflet_tags %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+
+<body>
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+    <li><a href="{% url 'event_list'%}">Home</a></li>
+</body>
+</html>

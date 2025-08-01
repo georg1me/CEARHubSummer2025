@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'maps/base.css' %}">
+    <meta charset="UTF-8">
+    <title>Data Portal</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'maps/CEAR-Emblem_flavicon.png' %}">
+    {% load leaflet_tags %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+
+<body>
+    <div class="banner-container">
+        <img class="img" src="{% static 'maps/CEAR-Emblem_white_web.png' %}" alt="CEAR">
+    </div>
+
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+
+    <div>
+        <script class="leaflet-container">
+            const greenIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        const yellowIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+            function map_init_basic(map, options) {
+                L.marker({{ Burton4H }}, {
+                    title: "sensor",
+                    icon: greenIcon
+                }).addTo(map).bindPopup("Burton 4H *Active*");
+
+                L.marker({{ Catalina }}, {
+                    title: "sensor",
+                    icon: yellowIcon
+                }).addTo(map).bindPopup("Catalina *Flat line warning*");
+
+                L.marker({{ HWY80 }}, {
+                    title: "sensor",
+                    icon: yellowIcon
+                }).addTo(map).bindPopup("Highway 80 *Flat line warning*");
+
+                L.marker({{ Lazaretto }}, {
+                    title: "sensor",
+                    icon: greenIcon
+                }).addTo(map).bindPopup("Lazaretto *Active*");
+            }
+        </script>
+    </div>
+</body>
+
+<div style="background-color:white;">
+    <div class="about">
+        <div class="about-text">
+            <h1 class="h">CEAR Hub Data Portal</h1>
+            <p>Use this portal to generate historical data collected from our network of internet-conected sensors monitoring environmental conditions in real-time.</p>
+            <p>Our comprehensive network of advanced environmentals sensors collects data on key climate indicators like water level and air quality.</p>
+        </div>
+    </div>
+
+    <div class="form">
+        <p>Use "YYYY-MM-DD" to pick date ranges:</p>
+        {% block form %}{% endblock %}
+        <a href="{% url 'Retrieve Data' %}"><button>Reset</button></a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="how-to">
+        <h1 class="h">How to use</h1>
+        <p>Use the drop down selector to choose a location from which you would like to receive historical data. If you would like to receive the data in a file that can be used in data manipulation programs, select 'generate csv'.</p>
+        <p>You can also run <a href="https://ioos.noaa.gov/project/qartod/">QARTOD</a> tests to ensure that the data from the selected timeframe meets quality standards.</p>
+    </div>
+
+</div>
+
+    <div class="footer" style="background-color:#00414e; padding:50px;">
+            <img class="img-footer" src="{% static 'maps/CEAR-Emblem_white_web.png' %}" alt="CEAR">
+            <p style="color:#60c1b1; padding:20px;">GET IN TOUCH   <a href="cearhub@gatech.edu" style="color:white; text-decoration: none;">  cearhub@gatech.edu</a></p>
+            <p style="color:#60c1b1; padding:20px;">© 2025 CEAR Hub</p>
+        </div>
+</div>
+
+<style>
+    .leaflet-container {
+        width:  900px;
+        height: 600px;
+        margin: auto;
+        text-align:center;
+        padding-top:30px;
+        margin-bottom: 0px;
+    }
+</style>
+
+</html>
